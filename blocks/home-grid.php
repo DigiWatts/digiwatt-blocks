@@ -239,7 +239,7 @@ function render_block_digiwatt_home_grid( $attributes ) {
         }
     }
 
-    $more_button = '<div class="more-articles"><a href="' . get_permalink( get_option( 'page_for_posts' ) ) . '">More Articles</a></div>';
+    $more_button = '<div class="dwb-home-grid-more-articles"><a href="' . get_permalink( get_option( 'page_for_posts' ) ) . '">More Articles</a></div>';
 
     $class = 'wp-block-dwb-home-grid-block';
 
