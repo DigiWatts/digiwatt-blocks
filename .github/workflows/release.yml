@@ -1,0 +1,62 @@
+name: Release
+
+on:
+  push:
+    branches:
+      - main
+
+permissions:
+  contents: write
+  issues: write
+  pull-requests: write
+
+concurrency:
+  group: release
+  cancel-in-progress: false
+
+jobs:
+  release:
+    runs-on: ubuntu-latest
+    steps:
+      # Opens (or updates) the release PR from the conventional commits since the last release.
+      # If a release PR was just merged, this creates the tag and GitHub release instead.
+      - name: Release Please
+        id: release
+        uses: googleapis/release-please-action@v4
+
+      # Merge the release PR right away. Pushes made with GITHUB_TOKEN don't trigger
+      # new workflow runs, so release-please is run a second time below to cut the release.
+      - name: Merge release PR
+        if: ${{ steps.release.outputs.prs_created == 'true' }}
+        env:
+          GH_TOKEN: ${{ github.token }}
+          PR_NUMBER: ${{ fromJSON(steps.release.outputs.pr).number }}
+        run: gh pr merge "$PR_NUMBER" --squash --repo "$GITHUB_REPOSITORY"
+
+      - name: Release Please (create release)
+        id: release_merged
+        if: ${{ steps.release.outputs.prs_created == 'true' }}
+        uses: googleapis/release-please-action@v4
+
+      - name: Get release tag
+        id: tag
+        if: ${{ steps.release.outputs.release_created || steps.release_merged.outputs.release_created }}
+        run: echo "name=${{ steps.release.outputs.tag_name || steps.release_merged.outputs.tag_name }}" >> "$GITHUB_OUTPUT"
+
+      - name: Checkout
+        if: ${{ steps.tag.outputs.name }}
+        uses: actions/checkout@v4
+        with:
+          ref: ${{ steps.tag.outputs.name }}
+
+      # The built block bundle is committed, so the zip is just the tracked files
+      # minus anything marked export-ignore in .gitattributes.
+      - name: Build plugin zip
+        if: ${{ steps.tag.outputs.name }}
+        run: git archive --format=zip --prefix=digiwatt-blocks/ -o digiwatt-blocks.zip HEAD
+
+      - name: Upload zip to release
+        if: ${{ steps.tag.outputs.name }}
+        env:
+          GH_TOKEN: ${{ github.token }}
+        run: gh release upload "${{ steps.tag.outputs.name }}" digiwatt-blocks.zip --clobber
