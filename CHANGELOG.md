@@ -1,5 +1,12 @@
 # DigiWatt Blocks Changelog
 
+## [0.4.0](https://github.com/DigiWatts/digiwatt-blocks/compare/0.3.0...0.4.0) (2026-10-12)
+
+
+### Features
+
+* add GitHub update checker ([#34](https://github.com/DigiWatts/digiwatt-blocks/issues/34)) ([c1f9076](https://github.com/DigiWatts/digiwatt-blocks/commit/c1f9076eddaa7227640b2fef676480f421ec0eda))
+
 ## 0.3.0
 
 * Added DWB Excerpt block
