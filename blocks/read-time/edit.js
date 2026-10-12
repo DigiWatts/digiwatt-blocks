@@ -7,6 +7,7 @@ import {
 	PanelBody,
 	PanelRow,
 	SelectControl,
+	// eslint-disable-next-line @wordpress/no-unsafe-wp-apis
 	__experimentalInputControl as InputControl,
 } from '@wordpress/components';
 
@@ -34,7 +35,7 @@ export default function ReadTimeEdit( { attributes, setAttributes } ) {
 
 		const readingTimeNumber = Math.ceil( postWordCount / 200 );
 
-		if ( 'before' == timePosition ) {
+		if ( 'before' === timePosition ) {
 			readingTime = readTimeText + ' ' + readingTimeNumber;
 		} else {
 			readingTime = readingTimeNumber + ' ' + readTimeText;

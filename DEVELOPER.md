@@ -14,7 +14,7 @@ Format css/js `npm run-script format`
 
 Lint css `npm run-script lint:css` | auto fix `npm run-script lint:css:fix`
 
-Lint js `npm run-script lint:js`
+Lint js `npm run-script lint:js` fix:  `npm run-script lint:js:fix` 
 
 Lint markdown `npm run-script lint:md:docs`
 
