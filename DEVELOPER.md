@@ -32,30 +32,6 @@ PHP Beautifier `composer phpcbf`
 
 PHP Stan `composer phpstan`
 
-## Gulp
-
-This is for the plugin in general. Everything is a Gulp command.
-
-### Styles
-
-Compile SASS `gulp sass`
-
-Minify CSS `gulp mincss`
-
-CSS linting with Stylelint `gulp lintcss`
-
-### Scripts
-
-Minify JS `gulp scripts`
-
-JS linting with JSHint `gulp lintjs`
-
-Make JS pretty `gulp beautifyjs`
-
-### Other
-
-Create plugin ZIP file for distribution `gulp zip`
-
 ## Releases
 
 Releases are automated with [release-please](https://github.com/googleapis/release-please). Commits and PR titles must follow [Conventional Commits](https://www.conventionalcommits.org/):
