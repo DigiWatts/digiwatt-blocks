@@ -32,7 +32,7 @@ final class DWB {
      * @access protected
      * @static
      */
-    protected static $_instance = null;
+    protected static $_instance = null; // @codingStandardsIgnoreLine PSR2.Classes.PropertyDeclaration.Underscore
 
     /**
      * Instance function.
@@ -114,7 +114,7 @@ final class DWB {
      */
     private function init_hooks() {
         add_action( 'init', array( $this, 'init' ), 0 );
-        add_action( 'wp_enqueue_scripts', array( $this, 'frontend_scripts_styles' ) );       
+        add_action( 'wp_enqueue_scripts', array( $this, 'frontend_scripts_styles' ) );
     }
 
     /**

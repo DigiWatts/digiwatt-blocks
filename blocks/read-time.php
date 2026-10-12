@@ -18,7 +18,7 @@ function dwb_read_time_block_init() {
         return;
     }
 
-    // automatically load dependencies and version
+    // automatically load dependencies and version.
     $asset_file = include DWB_ASSETS_PATH . 'build/blocks.asset.php';
     $block_slug = 'read-time';
 
@@ -26,7 +26,8 @@ function dwb_read_time_block_init() {
         'dwb-block-script',
         DWB_ASSETS_URL . 'build/blocks.js',
         $asset_file['dependencies'],
-        $asset_file['version']
+        $asset_file['version'],
+        true
     );
 
     $editor_css = 'editor.css';
@@ -48,28 +49,28 @@ function dwb_read_time_block_init() {
     register_block_type(
         "dwb/{$block_slug}",
         array(
-            'attributes' => array(
+            'attributes'      => array(
                 'readTimeText' => array(
-                    'type' => 'string',
+                    'type'    => 'string',
                     'default' => 'Minute Read',
                 ),
                 'timePosition' => array(
-                    'type' => 'string',
+                    'type'    => 'string',
                     'default' => 'after',
                 ),
             ),
             'render_callback' => 'render_block_digiwatt_read_time',
-            'editor_script' => 'dwb-block-script',
-            'editor_style' => "dwb-{$block_slug}-block-editor",
-            'style' => "dwb-{$block_slug}-block-style",
-        ),
+            'editor_script'   => 'dwb-block-script',
+            'editor_style'    => "dwb-{$block_slug}-block-editor",
+            'style'           => "dwb-{$block_slug}-block-style",
+        )
     );
 }
 add_action( 'init', 'dwb_read_time_block_init' );
 
 /**
  * Render the Read Time block.
- * 
+ *
  * @access public
  * @param mixed $attributes (array).
  * @return html
@@ -84,6 +85,6 @@ function render_block_digiwatt_read_time( $attributes ) {
     return sprintf(
         '<div %1$s>%2$s</div>',
         $wrapper_attributes,
-        $reading_time_text,
+        $reading_time_text
     );
 }

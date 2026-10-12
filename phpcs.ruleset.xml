@@ -11,6 +11,7 @@
 	<!-- Exclude paths --> 
 	<exclude-pattern>*/node_modules/*</exclude-pattern>
 	<exclude-pattern>*/vendor/*</exclude-pattern>
+	<exclude-pattern>*/assets/build/*</exclude-pattern>
 	<exclude-pattern>*/*.js</exclude-pattern>
 	<exclude-pattern>*/*.css</exclude-pattern>  
 
@@ -48,8 +49,8 @@
     <rule ref="Generic.WhiteSpace.DisallowTabIndent" />
     
     <rule ref="Squiz.Commenting.FunctionComment.MissingParamTag" />
-    <rule ref="Squiz.Commenting.FileComment.MissingPackageTag" />      
-     
+    <rule ref="Squiz.Commenting.FileComment.MissingPackageTag" /> 
+    
     <rule ref="WordPress.DB.DirectDatabaseQuery.DirectQuery" />        
     <rule ref="WordPress.DB.DirectDatabaseQuery.NoCaching" />        
     <rule ref="WordPress.DB.PreparedSQL.InterpolatedNotPrepared" />       

@@ -18,7 +18,7 @@ function dwb_post_header_block_init() {
         return;
     }
 
-    // automatically load dependencies and version
+    // automatically load dependencies and version.
     $asset_file = include DWB_ASSETS_PATH . 'build/blocks.asset.php';
     $block_slug = 'post-header';
 
@@ -59,18 +59,19 @@ function dwb_post_header_block_init() {
             ),
             'api_version'     => 2,
             'render_callback' => 'render_block_digiwatt_post_header',
-            'editor_script' => "dwb-block-script",
+            'editor_script'   => 'dwb-block-script',
             'editor_style'    => "dwb-{$block_slug}-block-editor",
             'style'           => "dwb-{$block_slug}-block-style",
-        ),
+        )
     );
-    
+
     wp_register_script(
-        "dwb-block-script",
+        'dwb-block-script',
         DWB_ASSETS_URL . 'build/blocks.js',
         $asset_file['dependencies'],
-        $asset_file['version']
-    );    
+        $asset_file['version'],
+        true
+    );
 
     $editor_css = 'editor.css';
     wp_register_style(
@@ -87,7 +88,6 @@ function dwb_post_header_block_init() {
         array(),
         filemtime( DWB_ABSPATH . "blocks/{$block_slug}/{$style_css}" )
     );
-
 
 }
 add_action( 'init', 'dwb_post_header_block_init' );
@@ -152,7 +152,7 @@ function render_block_digiwatt_post_header( $attributes ) {
             $html .= '<div class="post-thumbnail">' . get_dwb_post_header_post_thumbnail( $attributes['featuredImageSizeSlug'], $post->ID ) . '</div>';
         $html     .= '</div>';
         else :
-            $html .= '<div class="column column-image no-thumb" ' . $no_thumb_style . '></div>'; // force style here
+            $html .= '<div class="column column-image no-thumb" ' . $no_thumb_style . '></div>'; // force style here.
         endif;
         $html .= '</div>';
 
@@ -161,7 +161,7 @@ function render_block_digiwatt_post_header( $attributes ) {
         return sprintf(
             '<header %1$s>%2$s</header>',
             $wrapper_attributes,
-            $html,
+            $html
         );
 }
 
@@ -169,8 +169,8 @@ function render_block_digiwatt_post_header( $attributes ) {
  * Get post date and author.
  *
  * @access public
- * @param bool show author (byline) (default: true)
- * @return void
+ * @param bool $show_author byline (default: true).
+ * @return html
  */
 function get_dwb_post_header_posted_on( $show_author = true ) {
     $html = '';
@@ -188,9 +188,9 @@ function get_dwb_post_header_posted_on( $show_author = true ) {
  * Get the thumbnail.
  *
  * @access public
- * @param string $size (default: 'full')
- * @param int    $post_id (default: 0)
- * @return void
+ * @param string $size (default: 'full').
+ * @param int    $post_id (default: 0).
+ * @return html
  */
 function get_dwb_post_header_post_thumbnail( $size = 'full', $post_id = 0 ) {
     $thumb = '';
