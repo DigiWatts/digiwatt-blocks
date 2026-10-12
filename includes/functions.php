@@ -29,4 +29,3 @@ function dwb_reading_time( $attributes ) {
 
     return $reading_time;
 }
-
