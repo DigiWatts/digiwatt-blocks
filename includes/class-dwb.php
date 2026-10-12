@@ -131,17 +131,7 @@ final class DWB {
      * @access public
      * @return void
      */
-    public function frontend_scripts_styles() {
-        $build_path        = 'assets/build/';
-        $script_asset_path = DWB_ASSETS_PATH . 'build/app.asset.php';
-        $script_info       = file_exists( $script_asset_path ) ? include $script_asset_path : array(
-            'dependencies' => array(),
-            'version'      => $this->version,
-        );
-
-        wp_enqueue_script( 'dwb-blocks', DWB_ASSETS_URL . 'build/blocks.js', $script_info['dependencies'], $script_info['version'], true );
-
-    }
+    public function frontend_scripts_styles() {}
 
 }
 
