@@ -4,6 +4,10 @@
 
 * Added DWB Excerpt block
 * Removed Home Grid block
+* Post Header: option to hide the author
+* Post Header: fixed byline markup and image size default
+* No longer loads the editor script on the front end
+* Code cleanup to pass JS, CSS, and PHP linting
 
 ## 0.2.0
 
