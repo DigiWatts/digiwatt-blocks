@@ -7,6 +7,7 @@ import {
 	PanelBody,
 	PanelRow,
 	SelectControl,
+	// eslint-disable-next-line @wordpress/no-unsafe-wp-apis
 	__experimentalInputControl as InputControl,
 } from '@wordpress/components';
 

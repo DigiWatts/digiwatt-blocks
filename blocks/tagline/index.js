@@ -27,7 +27,7 @@ registerBlockType( 'dwb/tagline-block', {
 			selector: 'img',
 			attribute: 'src',
 		},
-		bgColor: {
+		bg_color: {
 			type: 'string',
 			default: '#8ed2fc',
 		},
@@ -41,7 +41,7 @@ registerBlockType( 'dwb/tagline-block', {
 	edit: ( props ) => {
 		const {
 			className,
-			attributes: { title, mediaID, mediaURL, bgColor },
+			attributes: { title, mediaID, mediaURL, bg_color: bgColor },
 			setAttributes,
 		} = props;
 
@@ -57,7 +57,7 @@ registerBlockType( 'dwb/tagline-block', {
 		};
 
 		const onChangeBGColor = ( hexColor ) => {
-			setAttributes( { bgColor: hexColor } );
+			setAttributes( { bg_color: hexColor } );
 		};
 
 		return (
@@ -126,7 +126,7 @@ registerBlockType( 'dwb/tagline-block', {
 	save: ( props ) => {
 		const {
 			className,
-			attributes: { title, mediaURL, bgColor },
+			attributes: { title, mediaURL, bg_color: bgColor },
 		} = props;
 		return (
 			<div className={ className } style={ { backgroundColor: bgColor } }>

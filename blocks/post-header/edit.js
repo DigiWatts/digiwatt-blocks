@@ -20,13 +20,10 @@ import {
 	InspectorControls,
 	PanelColorSettings,
 	useBlockProps,
-	store as blockEditorStore,
 } from '@wordpress/block-editor';
 
 export default function PostHeaderEdit( { attributes, setAttributes } ) {
 	const {
-		className,
-		align,
 		featuredImageSizeSlug,
 		featuredImageSizeWidth,
 		featuredImageSizeHeight,
@@ -40,7 +37,6 @@ export default function PostHeaderEdit( { attributes, setAttributes } ) {
 		( select ) => {
 			const { getUser, getMedia, getEditedEntityRecord } =
 				select( coreStore );
-			const { getSettings } = select( blockEditorStore );
 
 			const currentPostID = select( 'core/editor' ).getCurrentPostId();
 			const currentPostType =
@@ -153,6 +149,15 @@ export default function PostHeaderEdit( { attributes, setAttributes } ) {
 		</InspectorControls>
 	);
 
+	// get block properties and add custom ones.
+	const blockProps = useBlockProps( {
+		style: {
+			color: textColor !== undefined ? textColor : '',
+			backgroundColor:
+				backgroundColor !== undefined ? backgroundColor : '',
+		},
+	} );
+
 	if ( ! hasPost ) {
 		return (
 			<div>
@@ -164,15 +169,6 @@ export default function PostHeaderEdit( { attributes, setAttributes } ) {
 			</div>
 		);
 	}
-
-	// get block properties and add custom ones.
-	const blockProps = useBlockProps( {
-		style: {
-			color: textColor !== undefined ? textColor : '',
-			backgroundColor:
-				backgroundColor !== undefined ? backgroundColor : '',
-		},
-	} );
 
 	// byline.
 	const byline = (
