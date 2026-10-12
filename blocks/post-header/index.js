@@ -18,7 +18,7 @@ registerBlockType( name, {
 		},
 		featuredImageSizeSlug: {
 			type: 'string',
-			default: 'digiwatt-home-grid',
+			default: 'single',
 		},
 		featuredImageSizeWidth: {
 			type: 'number',
