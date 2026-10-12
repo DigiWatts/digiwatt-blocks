@@ -9,7 +9,7 @@ DigiWatt Blocks is a WordPress plugin that adds custom Gutenberg blocks (text do
 ## Commands
 
 ```
-npm ci --ignore-scripts   # node-sass@4 fails to compile on current Node; it isn't needed for the block build
+npm ci
 npm run build             # bundles blocks/index.js -> assets/build/blocks.js + blocks.asset.php
 npm run start             # watch mode
 npm run lint:js           # also lint:css, format (all @wordpress/scripts)
