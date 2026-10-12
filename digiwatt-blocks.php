@@ -23,7 +23,20 @@ if ( ! defined( 'DWB_PLUGIN_FILE' ) ) {
     define( 'DWB_PLUGIN_FILE', __FILE__ );
 }
 
+// Check GitHub releases for plugin updates.
+if ( file_exists( __DIR__ . '/vendor/autoload.php' ) ) {
+    require_once __DIR__ . '/vendor/autoload.php';
+
+    $dwb_update_checker = YahnisElsts\PluginUpdateChecker\v5\PucFactory::buildUpdateChecker(
+        'https://github.com/DigiWatts/digiwatt-blocks/',
+        __FILE__,
+        'digiwatt-blocks'
+    );
+    // Install the digiwatt-blocks.zip attached to each release, not GitHub's source zipball.
+    $dwb_update_checker->getVcsApi()->enableReleaseAssets();
+}
+
 // Include the main DWB class.
 if ( ! class_exists( 'DWB' ) ) {
-    include_once dirname( __FILE__ ) . '/includes/class-dwb.php';
+    include_once __DIR__ . '/includes/class-dwb.php';
 }

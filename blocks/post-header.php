@@ -88,7 +88,6 @@ function dwb_post_header_block_init() {
         array(),
         filemtime( DWB_ABSPATH . "blocks/{$block_slug}/{$style_css}" )
     );
-
 }
 add_action( 'init', 'dwb_post_header_block_init' );
 

@@ -56,5 +56,3 @@ function dwb_about_block_init() {
     );
 }
 add_action( 'init', 'dwb_about_block_init' );
-
-
