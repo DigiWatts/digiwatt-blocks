@@ -55,3 +55,14 @@ Make JS pretty `gulp beautifyjs`
 ### Other
 
 Create plugin ZIP file for distribution `gulp zip`
+
+## Releases
+
+Releases are automated with [release-please](https://github.com/googleapis/release-please). Commits and PR titles must follow [Conventional Commits](https://www.conventionalcommits.org/):
+
+* `feat: add gallery block` - new feature, bumps the minor version
+* `fix: correct read time rounding` - bug fix, bumps the patch version
+* `feat!: ...` or a `BREAKING CHANGE:` footer - breaking change (bumps the minor version until 1.0)
+* `chore:`, `docs:`, `refactor:`, `style:`, `ci:`, `build:`, `test:` - no release
+
+When a PR is merged into `main`, the Release workflow opens a release PR (version bump + `CHANGELOG.md`), merges it, creates the GitHub release, and attaches `digiwatt-blocks.zip`. Don't bump version numbers by hand. To force a specific version, add a `Release-As: 1.0.0` footer to a commit.

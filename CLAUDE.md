@@ -4,7 +4,7 @@ This file provides guidance to Claude Code (claude.ai/code) when working with co
 
 ## Overview
 
-DigiWatt Blocks is a WordPress plugin that adds custom Gutenberg blocks (text domain/prefix `dwb`). It lives inside a Local by Flywheel site (`~/LocalSites/bike`), so changes can be checked in that site's block editor and front end. Active development is on `release/0.3.0` (PR #21); `main` is still at 0.2.0.
+DigiWatt Blocks is a WordPress plugin that adds custom Gutenberg blocks (text domain/prefix `dwb`). It lives inside a Local by Flywheel site (`~/LocalSites/bike`), so changes can be checked in that site's block editor and front end.
 
 ## Commands
 
@@ -20,6 +20,12 @@ composer phpstan
 ```
 
 `webpack.config.js` overrides the wp-scripts entry/output, so the bundle goes to `assets/build/`, not `build/`. The built files are committed, so rebuild and commit them along with any JS change. There are no tests.
+
+## Releases
+
+Commits and PR titles use [Conventional Commits](https://www.conventionalcommits.org/) (`feat:`, `fix:`, `chore:`, ...). PRs are squash-merged, so the PR title becomes the commit on `main`; `.github/workflows/pr-title.yml` checks it.
+
+Releases are automated by release-please (`.github/workflows/release.yml`). Each push to `main` opens a release PR, the workflow merges it straight away, then tags the release (no `v` prefix, e.g. `0.4.0`) and attaches `digiwatt-blocks.zip`. Only `feat`, `fix`, and breaking changes trigger a release; while below 1.0, `feat` and breaking changes bump the minor version. Don't bump versions or edit `CHANGELOG.md` by hand: release-please updates `package.json`/`package-lock.json` and the lines marked `x-release-please-version` in `digiwatt-blocks.php`, `includes/class-dwb.php`, and `README.md`. The zip is `git archive` of the tag, so files left out of it are listed as `export-ignore` in `.gitattributes`.
 
 ## Architecture
 
