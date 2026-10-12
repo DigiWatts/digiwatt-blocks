@@ -30,8 +30,9 @@ jobs:
         if: ${{ steps.release.outputs.prs_created == 'true' }}
         env:
           GH_TOKEN: ${{ github.token }}
-          PR_NUMBER: ${{ fromJSON(steps.release.outputs.pr).number }}
-        run: gh pr merge "$PR_NUMBER" --squash --repo "$GITHUB_REPOSITORY"
+          # Step env is evaluated even when the step is skipped, so parse the PR JSON in the shell.
+          PR_JSON: ${{ steps.release.outputs.pr }}
+        run: gh pr merge "$(jq -r '.number' <<< "$PR_JSON")" --squash --repo "$GITHUB_REPOSITORY"
 
       - name: Release Please (create release)
         id: release_merged
