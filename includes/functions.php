@@ -31,7 +31,7 @@ function dwb_reading_time( $attributes ) {
 }
 
 /**
- * Calculate post read time.
+ * Get a trimmed post excerpt.
  *
  * @access public
  * @param int    $post_id (post id).
