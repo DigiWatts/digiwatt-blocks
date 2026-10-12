@@ -1,59 +1,65 @@
 {
-  "name": "dwb",
-  "version": "0.2.0",
-  "description": "DigiWatt Blocks",
-  "main": "gulpfile.js",
-  "scripts": {
-    "test": "echo \"You have DigiWatts\" && exit 1",
-    "build": "wp-scripts build blocks/index.js",
-    "format:js:src": "wp-scripts format-js",
-    "lint:js:src": "wp-scripts lint-js",
-    "packages-update": "wp-scripts packages-update",
-    "start": "wp-scripts start blocks/index.js"
-  },
-  "repository": {
-    "type": "git",
-    "url": "git+https://github.com/erikdmitchell/digitwatt-blocks.git"
-  },
-  "keywords": [],
-  "author": "Erik Mitchell",
-  "license": "GPL-3.0",
-  "bugs": {
-    "url": "https://github.com/erikdmitchell/digitwatt-blocks/issues"
-  },
-  "homepage": "https://github.com/erikdmitchell/digitwatt-blocks#readme",
-  "devDependencies": {
-    "@babel/core": "^7.7.5",
-    "@babel/preset-env": "^7.7.6",
-    "@babel/preset-react": "^7.0.0",
-    "@wordpress/scripts": "^14.1.1",
-    "babel-loader": "^8.0.6",
-    "gulp": "^4.0.2",
-    "gulp-autoprefixer": "^5.0.0",
-    "gulp-babel": "^8.0.0",
-    "gulp-concat": "^2.6.1",
-    "gulp-ignore": "^2.0.2",
-    "gulp-jshint": "^2.0.4",
-    "gulp-load-plugins": "",
-    "gulp-notify": "",
-    "gulp-phpcbf": "^0.1.2",
-    "gulp-phpcs": "^2.1.0",
-    "gulp-plumber": "^1.1.0",
-    "gulp-rename": "^1.2.2",
-    "gulp-sass": "^3.1.0",
-    "gulp-stylelint": "^13.0.0",
-    "gulp-uglify": "^3.0.2",
-    "gulp-uglifycss": "",
-    "gulp-util": "",
-    "gulp-zip": "^3.2.0",
-    "jshint": "",
-    "jshint-stylish": "",
-    "run-sequence": "",
-    "sass": "^1.32.13",
-    "stylelint": "^13.13.1"
-  },
-  "dependencies": {
-    "gulp-sourcemaps": "^2.6.5",
-    "node-sass": "^4.14.1"
-  }
+	"name": "dwb",
+	"version": "0.2.1",
+	"description": "DigiWatt Blocks",
+	"main": "gulpfile.js",
+	"scripts": {
+		"build": "wp-scripts build blocks/index.js",
+		"format": "wp-scripts format",
+		"lint:css": "wp-scripts lint-style",
+		"lint:css:fix": "wp-scripts lint-style --fix",
+		"lint:js": "wp-scripts lint-js",
+		"lint:js:fix": "wp-scripts lint-js --fix",
+		"lint:md:docs": "wp-scripts lint-md-docs",
+		"lint:pkg-json": "wp-scripts lint-pkg-json",
+		"packages-update": "wp-scripts packages-update",
+		"start": "wp-scripts start",
+		"format:js:src": "wp-scripts format-js",
+		"lint:js:src": "wp-scripts lint-js"
+	},
+	"repository": {
+		"type": "git",
+		"url": "git+https://github.com/erikdmitchell/digitwatt-blocks.git"
+	},
+	"keywords": [],
+	"author": "Erik Mitchell",
+	"license": "GPL-3.0",
+	"bugs": {
+		"url": "https://github.com/erikdmitchell/digitwatt-blocks/issues"
+	},
+	"homepage": "https://github.com/erikdmitchell/digitwatt-blocks#readme",
+	"devDependencies": {
+		"@babel/core": "^7.17.7",
+		"@babel/preset-env": "^7.16.11",
+		"@babel/preset-react": "^7.16.7",
+		"@wordpress/scripts": "^23.5.0",
+		"babel-loader": "^8.2.3",
+		"gulp": "^4.0.2",
+		"gulp-autoprefixer": "^5.0.0",
+		"gulp-babel": "^8.0.0",
+		"gulp-cache": "^1.1.3",
+		"gulp-filter": "^5.1.0",
+		"gulp-jshint": "^2.0.4",
+		"gulp-newer": "",
+		"gulp-plumber": "^1.1.0",
+		"gulp-rename": "^1.2.2",
+		"gulp-sass": "^5.0.0",
+		"gulp-sourcemaps": "^2.6.5",
+		"gulp-stylelint": "^9.0.0",
+		"gulp-uglify": "^3.0.2",
+		"gulp-uglifycss": "",
+		"gulp-zip": "^3.2.0",
+		"jshint": "^2.12.0",
+		"jshint-stylish": "",
+		"sass": "^1.43.4",
+		"stylelint": "^10.1.0"
+	},
+	"dependencies": {
+		"@wordpress/api-fetch": "^6.10.0",
+		"@wordpress/components": "^19.15.0",
+		"classnames": "^2.3.1",
+		"gulp-sourcemaps": "^2.6.5",
+		"lodash": "^4.17.21",
+		"node-sass": "^4.14.1"
+	}
 }

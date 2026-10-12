@@ -7,6 +7,7 @@ import {
 	PanelBody,
 	PanelRow,
 	SelectControl,
+	// eslint-disable-next-line @wordpress/no-unsafe-wp-apis
 	__experimentalInputControl as InputControl,
 } from '@wordpress/components';
 
@@ -16,20 +17,25 @@ export default function ReadTimeEdit( { attributes, setAttributes } ) {
 	const { post } = useSelect( ( select ) => {
 		const { getEntityRecord } = select( coreStore );
 		const currentPostId = select( 'core/editor' ).getCurrentPostId();
+		const currentPostType = select( 'core/editor' ).getCurrentPostType();
 
 		return {
-			post: getEntityRecord( 'postType', 'post', currentPostId ),
+			post: getEntityRecord( 'postType', currentPostType, currentPostId ),
 		};
 	} );
 
 	// setup reading timer.
 	const getReadingTime = () => {
-		const postWordCount = count( post.content.raw, 'words', {} );
-		const readingTimeNumber = Math.ceil( postWordCount / 200 );
-
+		let postWordCount = 0;
 		let readingTime = '';
 
-		if ( 'before' == timePosition ) {
+		if ( typeof post !== 'undefined' && post !== null ) {
+			postWordCount = count( post.content.raw, 'words', {} );
+		}
+
+		const readingTimeNumber = Math.ceil( postWordCount / 200 );
+
+		if ( 'before' === timePosition ) {
 			readingTime = readTimeText + ' ' + readingTimeNumber;
 		} else {
 			readingTime = readingTimeNumber + ' ' + readTimeText;

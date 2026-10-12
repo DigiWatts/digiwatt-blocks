@@ -1,0 +1,10 @@
+parameters:
+    level: 1
+    bootstrapFiles:
+        - phpstan-bootstrap.php
+    paths:
+        - includes/
+        - digiwatt-blocks.php
+    excludePaths:
+        - vendor/
+    ignoreErrors:

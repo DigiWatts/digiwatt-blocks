@@ -8,16 +8,31 @@ Located in the `blocks` folder
 
 ### NPM Commands/Tasks
 
-```
-"test": "echo \"You have DigiWatts" && exit 1",
-"build": "wp-scripts build blocks/index.js",
-"format:js:src": "wp-scripts format-js",
-"lint:js:src": "wp-scripts lint-js",
-"packages-update": "wp-scripts packages-update",
-"start": "wp-scripts start blocks/index.js"
-```
+Build app `npm run-script build`
 
-## Plugin
+Format css/js `npm run-script format`
+
+Lint css `npm run-script lint:css` | auto fix `npm run-script lint:css:fix`
+
+Lint js `npm run-script lint:js` fix:  `npm run-script lint:js:fix` 
+
+Lint markdown `npm run-script lint:md:docs`
+
+Lint json `npm run-script lint:pkg-json`
+
+Update packages: `npm run-script packages-update`
+
+Start app dev `npm start`
+
+## Composer
+
+PHP Code Standards `composer phpcs`
+
+PHP Beautifier `composer phpcbf`
+
+PHP Stan `composer phpstan`
+
+## Gulp
 
 This is for the plugin in general. Everything is a Gulp command.
 
@@ -36,12 +51,6 @@ Minify JS `gulp scripts`
 JS linting with JSHint `gulp lintjs`
 
 Make JS pretty `gulp beautifyjs`
-
-### PHP
-
-PHP Code Sniffer `gulp phpcs`
-
-PHP Code Beautifier `gulp phpcbf`
 
 ### Other
 

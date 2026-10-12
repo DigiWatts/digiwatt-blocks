@@ -3,18 +3,30 @@
 	<!-- See https://github.com/squizlabs/PHP_CodeSniffer/wiki/Annotated-ruleset.xml -->
 	<!-- See https://github.com/WordPress-Coding-Standards/WordPress-Coding-Standards/blob/develop/WordPress-Core/ruleset.xml -->
 
-	<description>PHP_CodeSniffer ruleset.</description>
+	<description>DigiWatt Blocks PHP_CodeSniffer ruleset.</description>
 
-	<!-- Configs -->
-	<config name="minimum_supported_wp_version" value="4.7" />
-	<config name="testVersion" value="7.1-"/>
-
-    <!-- Include file/paths -->
-    <file>./</file>
-    
+	<!-- Include file/paths -->
+	<file>./</file>
+	
 	<!-- Exclude paths --> 
 	<exclude-pattern>*/node_modules/*</exclude-pattern>
-	<exclude-pattern>*/vendor/*</exclude-pattern>    
+	<exclude-pattern>*/vendor/*</exclude-pattern>
+	<exclude-pattern>*/assets/build/*</exclude-pattern>
+	<exclude-pattern>*/*.js</exclude-pattern>
+	<exclude-pattern>*/*.css</exclude-pattern>  
+
+	<!-- Show progress, show the error codes for each message (source). -->
+	<arg value="ps" />
+
+	<!-- Strip the filepaths in reports down to the relevant bit. -->
+	<arg name="basepath" value="./" />
+
+	<!-- Check up to 8 files simultaneously. -->
+	<arg name="parallel" value="8" />
+
+	<!-- Configs -->
+	<config name="minimum_supported_wp_version" value="5.2" />
+	<config name="testVersion" value="7.1-"/>
 
 	<!-- Rules -->
 	<rule ref="PHPCompatibility"/>
@@ -23,6 +35,8 @@
 		<exclude name="Generic.WhiteSpace.DisallowSpaceIndent" />
 		<exclude name="WordPress.VIP.PostsPerPage.posts_per_page_posts_per_page" />
 		<exclude name="WordPress.VIP.DirectDatabaseQuery.NoCaching" />
+        <exclude name="WordPress.VIP.PostsPerPage.posts_per_page_nopaging" />
+        <exclude name="WordPress.VIP.PostsPerPage.posts_per_page_numberposts" />
 	</rule>
 
     <rule ref="Generic.WhiteSpace.ScopeIndent">
@@ -33,10 +47,28 @@
     </rule>
     
     <rule ref="Generic.WhiteSpace.DisallowTabIndent" />
+    
+    <rule ref="Squiz.Commenting.FunctionComment.MissingParamTag" />
+    <rule ref="Squiz.Commenting.FileComment.MissingPackageTag" /> 
+    
+    <rule ref="WordPress.DB.DirectDatabaseQuery.DirectQuery" />        
+    <rule ref="WordPress.DB.DirectDatabaseQuery.NoCaching" />        
+    <rule ref="WordPress.DB.PreparedSQL.InterpolatedNotPrepared" />       
+
+    <rule ref="WordPress.WhiteSpace.PrecisionAlignment">
+    	<properties>
+    		<property name="ignoreAlignmentTokens" type="array">
+    			<element value="T_COMMENT"/>
+    			<element value="T_INLINE_HTML"/>
+    		</property>
+    	</properties>
+    </rule>
 
 	<rule ref="WordPress.WP.I18n">
 		<properties>
 			<property name="text_domain" type="array" value="dwb" />
 		</properties>
 	</rule>
+	
+	<rule ref="WordPress.Files.FileName.InvalidClassFileName" />
 </ruleset>

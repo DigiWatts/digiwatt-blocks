@@ -1,5 +1,5 @@
 // Project configuration
-var buildInclude = [
+const buildInclude = [
 	// include common file types
 	'**/*.php',
 	'**/*.html',
@@ -32,13 +32,7 @@ var buildInclude = [
 	'!**/*.log',
 ];
 
-var phpSrc = [
-	'**/*.php', // Include all files
-	'!node_modules/**/*', // Exclude node_modules
-	'!vendor/**', // Exclude vendor
-];
-
-var cssInclude = [
+const cssInclude = [
 	// include css
 	'**/*.css',
 
@@ -52,7 +46,7 @@ var cssInclude = [
 	'!blocks/**',
 ];
 
-var jsInclude = [
+const jsInclude = [
 	// include js
 	'**/*.js',
 
@@ -73,22 +67,12 @@ const gulp = require( 'gulp' ),
 	minifycss = require( 'gulp-uglifycss' ),
 	uglify = require( 'gulp-uglify' ),
 	rename = require( 'gulp-rename' ),
-	concat = require( 'gulp-concat' ),
-	notify = require( 'gulp-notify' ),
-	runSequence = require( 'run-sequence' ),
 	gulpsass = require( 'gulp-sass' ),
-	plugins = require( 'gulp-load-plugins' )( {
-		camelize: true,
-	} ),
-	ignore = require( 'gulp-ignore' ), // Helps with ignoring files and directories in our run tasks
 	plumber = require( 'gulp-plumber' ), // Helps prevent stream crashing on errors
 	sourcemaps = require( 'gulp-sourcemaps' ),
 	jshint = require( 'gulp-jshint' ), // JSHint plugin
 	stylish = require( 'jshint-stylish' ), // JSHint Stylish plugin
 	stylelint = require( 'gulp-stylelint' ), // stylelint plugin
-	gulpphpcs = require( 'gulp-phpcs' ), // Gulp plugin for running PHP Code Sniffer.
-	gphpcbf = require( 'gulp-phpcbf' ), // PHP Code Beautifier
-	gutil = require( 'gulp-util' ), // gulp util
 	gzip = require( 'gulp-zip' );
 
 /**
@@ -203,48 +187,9 @@ function lintjs( done ) {
 	done();
 }
 
-// make pretty
-function beautifyjs( done ) {
-	return gulp.src( jsInclude ).pipe( beautify() ).pipe( gulp.dest( './' ) );
-	done();
-}
-
 /**
- * PHP
+ * Misc
  */
-
-// PHP Code Sniffer.
-function phpcs( done ) {
-	return gulp
-		.src( phpSrc )
-		.pipe(
-			gulpphpcs( {
-				bin: 'vendor/bin/phpcs',
-				standard: './phpcs.ruleset.xml',
-				warningSeverity: 0,
-			} )
-		)
-		.pipe( gulpphpcs.reporter( 'log' ) );
-	done();
-}
-
-// PHP Code Beautifier.
-function phpcbf( done ) {
-	return gulp
-		.src( phpSrc )
-		.pipe(
-			gphpcbf( {
-				bin: 'vendor/bin/phpcbf',
-				standard: './phpcs.ruleset.xml',
-				warningSeverity: 0,
-			} )
-		)
-		.on( 'error', gutil.log )
-		.pipe( gulp.dest( './' ) );
-	done();
-}
-
-/**/
 
 // Watch files
 function watchFiles() {
@@ -274,9 +219,6 @@ exports.lintcss = lintcss;
 exports.styles = styles;
 exports.js = js;
 exports.lintjs = lintjs;
-exports.beautifyjs = beautifyjs;
-exports.phpcs = phpcs;
-exports.phpcbf = phpcbf;
 exports.zip = zip;
 exports.build = build;
 exports.watch = watch;

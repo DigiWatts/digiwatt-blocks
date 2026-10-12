@@ -21,7 +21,7 @@ final class DWB {
      * @var string
      * @access public
      */
-    public $version = '0.1.21';
+    public $version = '0.2.1';
 
     /**
      * _instance
@@ -32,7 +32,7 @@ final class DWB {
      * @access protected
      * @static
      */
-    protected static $_instance = null;
+    protected static $_instance = null; // @codingStandardsIgnoreLine PSR2.Classes.PropertyDeclaration.Underscore
 
     /**
      * Instance function.
@@ -74,6 +74,7 @@ final class DWB {
         $this->define( 'DWB_ABSURL', plugin_dir_url( DWB_PLUGIN_FILE ) );
         $this->define( 'DWB_URL', plugin_dir_url( __FILE__ ) );
         $this->define( 'DWB_ASSETS_URL', plugin_dir_url( __DIR__ ) . 'assets/' );
+        $this->define( 'DWB_ASSETS_PATH', dirname( DWB_PLUGIN_FILE ) . '/assets/' );
     }
 
     /**
@@ -97,13 +98,12 @@ final class DWB {
      * @return void
      */
     public function includes() {
-        include_once( DWB_ABSPATH . 'includes/functions.php' );
-                
-        include_once( DWB_ABSPATH . 'blocks/about.php' );
-        include_once( DWB_ABSPATH . 'blocks/home-grid.php' );
-        include_once( DWB_ABSPATH . 'blocks/post-header.php' );
-        include_once( DWB_ABSPATH . 'blocks/read-time.php' );
-        include_once( DWB_ABSPATH . 'blocks/tagline.php' );
+        include_once DWB_ABSPATH . 'includes/functions.php';
+
+        include_once DWB_ABSPATH . 'blocks/about.php';
+        include_once DWB_ABSPATH . 'blocks/post-header.php';
+        include_once DWB_ABSPATH . 'blocks/read-time.php';
+        include_once DWB_ABSPATH . 'blocks/tagline.php';
     }
 
     /**

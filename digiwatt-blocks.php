@@ -7,7 +7,7 @@
  * Author URI: https://erikmitchell.net
  * Text Domain: dwb
  * Domain Path: /languages
- * Version: 0.2.0
+ * Version: 0.2.1
  *
  * @package dwb
  */
@@ -22,6 +22,6 @@ if ( ! defined( 'DWB_PLUGIN_FILE' ) ) {
 }
 
 // Include the main DWB class.
-if ( ! class_exists( 'STWATT' ) ) {
+if ( ! class_exists( 'DWB' ) ) {
     include_once dirname( __FILE__ ) . '/includes/class-dwb.php';
 }
