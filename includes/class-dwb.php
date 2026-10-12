@@ -132,7 +132,6 @@ final class DWB {
      * @return void
      */
     public function frontend_scripts_styles() {}
-
 }
 
 /**

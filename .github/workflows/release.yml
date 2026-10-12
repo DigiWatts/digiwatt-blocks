@@ -50,11 +50,16 @@ jobs:
         with:
           ref: ${{ steps.tag.outputs.name }}
 
-      # The built block bundle is committed, so the zip is just the tracked files
-      # minus anything marked export-ignore in .gitattributes.
+      # The built block bundle is committed, so the zip is the tracked files (minus anything
+      # marked export-ignore in .gitattributes) plus the production composer dependencies.
       - name: Build plugin zip
         if: ${{ steps.tag.outputs.name }}
-        run: git archive --format=zip --prefix=digiwatt-blocks/ -o digiwatt-blocks.zip HEAD
+        run: |
+          mkdir dist
+          git archive --prefix=digiwatt-blocks/ HEAD | tar -x -C dist
+          composer install --no-dev --optimize-autoloader --no-interaction
+          cp -R vendor dist/digiwatt-blocks/
+          (cd dist && zip -rq ../digiwatt-blocks.zip digiwatt-blocks)
 
       - name: Upload zip to release
         if: ${{ steps.tag.outputs.name }}
