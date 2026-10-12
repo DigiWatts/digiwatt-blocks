@@ -5,14 +5,14 @@
 .wp-block-dwb-about-block .image-wrap {
     background-size: cover !important;
     width: 100%;
-    height: 400px; 
+    height: 400px;
 }
 
 .wp-block-dwb-about-block .about-text-wrap {
     display: flex;
     flex-wrap: wrap;
     align-items: center;
-    justify-content: center;    
+    justify-content: center;
 }
 
 .wp-block-dwb-about-block .about-text-wrap .text-inner {

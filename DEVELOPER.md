@@ -12,7 +12,7 @@ Build app `npm run-script build`
 
 Format css/js `npm run-script format`
 
-Lint css `npm run-script lint:css`
+Lint css `npm run-script lint:css` | auto fix `npm run-script lint:css:fix`
 
 Lint js `npm run-script lint:js`
 
